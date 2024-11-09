@@ -9,7 +9,7 @@ jobs:
   repo-sync:
     runs-on: ubuntu-latest
     env:
-      SOURCE_REPO: "https://github.com/Freika/dawarich"
+      SOURCE_REPO: "https://github.com/Freika/dawarich.git"
       DEST_REPO: "https://${{ github.actor }}:${{ secrets.PAT }}@github.com/saschazepter/dawarich.git"
     steps:
     - uses: actions/checkout@v4
