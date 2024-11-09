@@ -18,7 +18,7 @@ jobs:
         persist-credentials: false
     - run: |
         SOURCE_REPO="https://git.streamboard.tv/common/oscam.git"
-        DEST_REPO="https://$GITHUB_ACTOR:${{ secrets.PAT }}@github.com/saschazepter/OSCam.git"
+        DEST_REPO="https://$GITHUB_ACTOR:${{ secrets.PAT }}@github.com/OSCam.git"
 
         git config --unset-all http."https://github.com/".extraheader || :
 
