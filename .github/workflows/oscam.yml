@@ -1,0 +1,25 @@
+# File: .github/workflows/oscam.yml
+
+on:
+#  schedule:
+#  - cron:  "*/15 * * * *"
+  workflow_dispatch:
+
+jobs:
+  repo-sync:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+      with:
+        persist-credentials: false
+    - run: |
+        SOURCE_REPO="https://git.streamboard.tv/common/oscam.git"
+        DEST_REPO="https://$GITHUB_ACTOR:$GITHUB_TOKEN@github.com/OSCam"
+
+        git config --unset-all http."https://github.com/".extraheader || :
+        git remote set-url origin "https://$GITHUB_ACTOR:$GITHUB_TOKEN@github.com/OSCam"
+        git remote add tmp_upstream "$SOURCE_REPO"
+
+        echo "Fetching tmp_upstream"
+        git fetch tmp_upstream --quiet
+        git remote --verbose
