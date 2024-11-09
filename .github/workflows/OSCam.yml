@@ -12,12 +12,10 @@ jobs:
       SOURCE_REPO: "https://git.streamboard.tv/common/oscam.git"
       DEST_REPO: "https://${{ github.actor }}:${{ secrets.PAT }}@github.com/saschazepter/OSCam.git"
     steps:
-    #- uses: actions/checkout@v4
-    #  with:
-    #    persist-credentials: false
+    - uses: actions/checkout@v4
+      with:
+        persist-credentials: false
     - run: |
-        git init .
-
         git config --unset-all http."https://github.com/".extraheader || :
 
         echo "Resetting origin to: $DEST_REPO"
