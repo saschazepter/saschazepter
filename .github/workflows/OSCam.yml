@@ -16,6 +16,8 @@ jobs:
     #  with:
     #    persist-credentials: false
     - run: |
+        git init .
+
         git config --unset-all http."https://github.com/".extraheader || :
 
         echo "Resetting origin to: $DEST_REPO"
