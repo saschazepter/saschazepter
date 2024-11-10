@@ -1,9 +1,9 @@
 # File: .github/workflows/Jigsaw.yml
 
 on:
-  schedule:
+#  schedule:
 #  - cron:  "*/15 * * * *"
-#  workflow_dispatch:
+  workflow_dispatch:
 
 jobs:
   repo-sync:
