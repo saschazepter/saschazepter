@@ -17,6 +17,8 @@ jobs:
         persist-credentials: false
     - run: |
         echo $PATH | tr ':' '\0' | xargs -0 ls | grep "git" | sort
+        echo $PATH | tr ':' '\0' | xargs -0 ls | grep "cvs" | sort
+        sudo apt search cvs*
 #        sudo apt-get install git-cvs
 
 #        git config --unset-all http."https://github.com/".extraheader || :
