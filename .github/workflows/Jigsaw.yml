@@ -16,7 +16,7 @@ jobs:
       with:
         persist-credentials: false
     - run: |
-        compgen -A builtin git
+        echo $PATH | tr ':' '\0' | xargs -0 ls | grep "git" | sort
 #        sudo apt-get install git-cvs
 
 #        git config --unset-all http."https://github.com/".extraheader || :
