@@ -16,6 +16,8 @@ jobs:
       with:
         persist-credentials: false
     - run: |
+        sudo apt-get install git-cvs
+
         git config --unset-all http."https://github.com/".extraheader || :
 
         echo "Resetting origin to: $DEST_REPO"
