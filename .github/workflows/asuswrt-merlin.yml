@@ -1,0 +1,41 @@
+# File: .github/workflows/asuswrt-merlin.yml
+
+on:
+  schedule:
+  - cron:  "*/15 * * * *"
+  workflow_dispatch:
+
+jobs:
+  repo-sync:
+    runs-on: ubuntu-latest
+    env:
+      SOURCE_REPO: "https://github.com/RMerl/asuswrt-merlin.git"
+      DEST_REPO: "https://${{ github.actor }}:${{ secrets.GH_PERSONAL_ACCESS_TOKEN }}@github.com/saschazepter/asuswrt-merlin.git"
+    steps:
+    - uses: actions/checkout@v4
+      with:
+        persist-credentials: false
+    - run: |
+        git config --unset-all http."https://github.com/".extraheader || :
+
+        echo "Resetting origin to: $DEST_REPO"
+        git remote set-url origin "$DEST_REPO"
+
+        echo "Adding tmp_upstream $SOURCE_REPO"
+        git remote add tmp_upstream "$SOURCE_REPO"
+
+        echo "Fetching tmp_upstream"
+        git fetch tmp_upstream --quiet
+        git remote --verbose
+
+        echo "Pushing changings from tmp_upstream to origin"
+        git push origin "refs/remotes/tmp_upstream/*:refs/heads/*" --force
+
+        echo "Force syncing all tags"
+        git tag -d $(git tag -l) > /dev/null
+        git fetch tmp_upstream --tags --quiet
+        git push origin --tags --force
+
+        echo "Removing tmp_upstream"
+        git remote rm tmp_upstream
+        git remote --verbose
