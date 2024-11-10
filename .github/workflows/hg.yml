@@ -9,7 +9,7 @@ jobs:
   repo-sync:
     runs-on: ubuntu-latest
     env:
-      SOURCE_REPO: "https://repo.mercurial-scm.org/hg"
+      SOURCE_REPO: "https://hg.savannah.nongnu.org/hgweb/pyhurd"
       DEST_REPO: "hg"
     steps:
     - uses: actions/setup-python@v5
