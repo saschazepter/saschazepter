@@ -1,0 +1,30 @@
+# File: .github/workflows/Jigsaw.yml
+
+on:
+  schedule:
+#  - cron:  "*/15 * * * *"
+#  workflow_dispatch:
+
+jobs:
+  repo-sync:
+    runs-on: ubuntu-latest
+    env:
+      SOURCE_REPO: ""
+      DEST_REPO: "https://${{ github.actor }}:${{ secrets.GH_PERSONAL_ACCESS_TOKEN }}@github.com/saschazepter/Jigsaw.git"
+    steps:
+    - uses: actions/checkout@v4
+      with:
+        persist-credentials: false
+    - run: |
+        git config --unset-all http."https://github.com/".extraheader || :
+
+        echo "Resetting origin to: $DEST_REPO"
+        git remote set-url origin "$DEST_REPO"
+
+        git config set cvsimport.o master
+        git config set cvsimport.d :pserver:anonymous@dev.w3.org:/sources/public
+        git config set cvsimport.module java
+
+        git cvsimport -p -x 2
+
+        git push origin --force
