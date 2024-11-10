@@ -16,17 +16,18 @@ jobs:
       with:
         persist-credentials: false
     - run: |
-        sudo apt-get install git-cvs
+        compgen -A builtin git
+#        sudo apt-get install git-cvs
 
-        git config --unset-all http."https://github.com/".extraheader || :
+#        git config --unset-all http."https://github.com/".extraheader || :
 
-        echo "Resetting origin to: $DEST_REPO"
-        git remote set-url origin "$DEST_REPO"
+#        echo "Resetting origin to: $DEST_REPO"
+#        git remote set-url origin "$DEST_REPO"
 
-        git config set cvsimport.o master
-        git config set cvsimport.d :pserver:anonymous@dev.w3.org:/sources/public
-        git config set cvsimport.module java
+#        git config set cvsimport.o master
+#        git config set cvsimport.d :pserver:anonymous@dev.w3.org:/sources/public
+#        git config set cvsimport.module java
 
-        git cvsimport -p -x 2
+#        git cvsimport -p -x 2
 
-        git push origin --force
+#        git push origin --force
