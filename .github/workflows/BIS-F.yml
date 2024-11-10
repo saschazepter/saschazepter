@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       SOURCE_REPO: "https://github.com/EUCweb/BIS-F.git"
-      DEST_REPO: "https://${{ github.actor }}:${{ secrets.PAT }}@github.com/saschazepter/BIS-F.git"
+      DEST_REPO: "https://${{ github.actor }}:${{ secrets.GH_PERSONAL_ACCESS_TOKEN }}@github.com/saschazepter/BIS-F.git"
     steps:
     - uses: actions/checkout@v4
       with:
