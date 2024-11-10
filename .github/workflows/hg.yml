@@ -9,7 +9,7 @@ jobs:
   repo-sync:
     runs-on: ubuntu-latest
     env:
-      SOURCE_REPO: "https://github.com/java-decompiler/jd-gui.git"
+      SOURCE_REPO: "https://repo.mercurial-scm.org/hg"
       DEST_REPO: "hg"
     steps:
     - uses: actions/setup-python@v5
