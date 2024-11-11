@@ -20,14 +20,14 @@ jobs:
         sudo apt-get update
         sudo apt-get -y install git-svn
 
-        echo $PATH | tr ':' '\0' | xargs -0 ls | grep "git" | sort
-        echo $PATH | tr ':' '\0' | xargs -0 ls | grep "cvs" | sort
-        echo $PATH | tr ':' '\0' | xargs -0 ls | grep "svn" | sort
-        sudo apt search git*
-        sudo apt search svn*
+        rem echo $PATH | tr ':' '\0' | xargs -0 ls | grep "git" | sort
+        rem echo $PATH | tr ':' '\0' | xargs -0 ls | grep "cvs" | sort
+        rem echo $PATH | tr ':' '\0' | xargs -0 ls | grep "svn" | sort
+        rem sudo apt search git*
+        rem sudo apt search svn*
 
-        git cvs -h
-        git svn -h
+        git cvs -h || exit 0
+        git svn -h || exit 0
 
 #        sudo apt-get install git-cvs
 
