@@ -16,14 +16,16 @@ jobs:
       with:
         persist-credentials: false
     - run: |
-        #echo $PATH | tr ':' '\0' | xargs -0 ls | grep "git" | sort
-        #echo $PATH | tr ':' '\0' | xargs -0 ls | grep "cvs" | sort
-        #echo $PATH | tr ':' '\0' | xargs -0 ls | grep "svn" | sort
-        #sudo apt search git*
-        #sudo apt search svn*
         sudo add-apt-repository -y "ppa:git-core/ppa"
         sudo apt-get update
         sudo apt-get -y install git-svn
+
+        echo $PATH | tr ':' '\0' | xargs -0 ls | grep "git" | sort
+        echo $PATH | tr ':' '\0' | xargs -0 ls | grep "cvs" | sort
+        echo $PATH | tr ':' '\0' | xargs -0 ls | grep "svn" | sort
+        sudo apt search git*
+        sudo apt search svn*
+
 #        sudo apt-get install git-cvs
 
 #        git config --unset-all http."https://github.com/".extraheader || :
