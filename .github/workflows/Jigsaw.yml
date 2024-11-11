@@ -26,6 +26,9 @@ jobs:
         sudo apt search git*
         sudo apt search svn*
 
+        git cvs -h
+        git svn -h
+
 #        sudo apt-get install git-cvs
 
 #        git config --unset-all http."https://github.com/".extraheader || :
