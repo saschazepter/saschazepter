@@ -9,7 +9,7 @@ jobs:
   repo-sync:
     runs-on: ubuntu-latest
     env:
-      SOURCE_REPO: "https://github.com/CarloWood/cwautomacros.git
+      SOURCE_REPO: "https://github.com/CarloWood/cwautomacros.git"
       DEST_REPO: "https://${{ github.actor }}:${{ secrets.GH_PERSONAL_ACCESS_TOKEN }}@github.com/saschazepter/cwautomacros.git"
     steps:
     - uses: actions/checkout@v4
