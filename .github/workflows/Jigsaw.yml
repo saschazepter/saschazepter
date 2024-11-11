@@ -18,7 +18,8 @@ jobs:
     - run: |
         sudo add-apt-repository -y "ppa:git-core/ppa"
         sudo apt-get update
-        sudo apt-get -y install git-svn
+        #sudo apt-get -y install git-svn
+        sudo apt-get -y install git-cvs
 
         #echo $PATH | tr ':' '\0' | xargs -0 ls | grep "git" | sort
         #echo $PATH | tr ':' '\0' | xargs -0 ls | grep "cvs" | sort
@@ -26,20 +27,18 @@ jobs:
         #sudo apt search git*
         #sudo apt search svn*
 
-        git cvs -h || exit 0
-        git svn -h || exit 0
+        #git cvs -h || exit 0
+        #git svn -h || exit 0
 
-#        sudo apt-get install git-cvs
+        git config --unset-all http."https://github.com/".extraheader || :
 
-#        git config --unset-all http."https://github.com/".extraheader || :
+        echo "Resetting origin to: $DEST_REPO"
+        git remote set-url origin "$DEST_REPO"
 
-#        echo "Resetting origin to: $DEST_REPO"
-#        git remote set-url origin "$DEST_REPO"
+        git config set cvsimport.o master
+        git config set cvsimport.d :pserver:anonymous@dev.w3.org:/sources/public
+        git config set cvsimport.module java
 
-#        git config set cvsimport.o master
-#        git config set cvsimport.d :pserver:anonymous@dev.w3.org:/sources/public
-#        git config set cvsimport.module java
+        git cvsimport -p -x 2
 
-#        git cvsimport -p -x 2
-
-#        git push origin --force
+        git push origin --force
