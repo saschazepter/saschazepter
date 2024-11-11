@@ -21,7 +21,10 @@ jobs:
         #echo $PATH | tr ':' '\0' | xargs -0 ls | grep "svn" | sort
         #sudo apt search git*
         #sudo apt search svn*
-        sudo apt-get -y install git-svn 
+        sudo apt-get -y install ppa-purge
+        sudo ppa-purge ppa:git-core/ppa
+        sudo apt-get update
+        sudo apt-get -y install git git-svn
 #        sudo apt-get install git-cvs
 
 #        git config --unset-all http."https://github.com/".extraheader || :
