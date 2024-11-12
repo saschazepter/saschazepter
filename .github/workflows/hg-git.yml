@@ -34,6 +34,7 @@ jobs:
 
         echo "Pushing changings from tmp_upstream to origin"
         #git push origin "refs/remotes/tmp_upstream/*:refs/heads/*" --force
+        git fsck
         git gc
         git push origin --all --force --no-thin
 
