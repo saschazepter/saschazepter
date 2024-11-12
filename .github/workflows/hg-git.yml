@@ -21,6 +21,7 @@ jobs:
         sudo apt-get -y install git-remote-hg
 
         git config --global pack.window 1
+        git config --global http.version HTTP/1.1
 
         git config --unset-all http."https://github.com/".extraheader || :
 
