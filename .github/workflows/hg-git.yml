@@ -34,7 +34,7 @@ jobs:
         git remote add tmp_upstream "$SOURCE_REPO"
 
         echo "Fetching tmp_upstream"
-        git fetch tmp_upstream --quiet
+        git fetch tmp_upstream --unshallow --quiet
         git remote --verbose
 
         echo "Pushing changings from tmp_upstream to origin"
