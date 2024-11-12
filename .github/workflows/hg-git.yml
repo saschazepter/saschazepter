@@ -20,6 +20,10 @@ jobs:
         sudo apt-get update
         sudo apt-get -y install git-remote-hg
 
+        git config --global set transfer.fsckobjects true
+        git config --global set fetch.fsckobjects true
+        git config --global set receivce.fsckobjects true
+
         git config --unset-all http."https://github.com/".extraheader || :
 
         echo "Resetting origin to: $DEST_REPO"
