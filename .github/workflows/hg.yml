@@ -22,7 +22,7 @@ jobs:
         git remote set-url origin "$DEST_REPO"
 
         echo "Adding tmp_upstream $SOURCE_REPO"
-        git remote add tmp_upstream "$SOURCE_REPO"
+        git remote add tmp_upstream "hg::https://foss.heptapod.net/mercurial/hg-git"
 
         echo "Fetching tmp_upstream"
         git fetch tmp_upstream --quiet
