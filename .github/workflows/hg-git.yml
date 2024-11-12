@@ -22,4 +22,4 @@ jobs:
         sudo python -m pip install hg-git
 
         hg clone "$SOURCE_REPO" work
-        hg push work "$DEST_REPO"
+        cd work && hg push "$DEST_REPO"
