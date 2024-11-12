@@ -18,35 +18,5 @@ jobs:
     - run: |
         sudo add-apt-repository -y "ppa:git-core/ppa"
         sudo apt-get update
-        sudo apt-get -y install git-remote-hg
-
-        git config --global transfer.fsckobjects true
-        git config --global fetch.fsckobjects true
-        git config --global receivce.fsckobjects true
-
-        git config --unset-all http."https://github.com/".extraheader || :
-
-        echo "Resetting origin to: $DEST_REPO"
-        git remote set-url origin "$DEST_REPO"
-
-        echo "Adding tmp_upstream $SOURCE_REPO"
-        git remote add tmp_upstream "$SOURCE_REPO"
-
-        echo "Fetching tmp_upstream"
-        git fetch tmp_upstream --quiet
-        git remote --verbose
-
-        echo "Pushing changings from tmp_upstream to origin"
-        #git push origin "refs/remotes/tmp_upstream/*:refs/heads/*" --force
-        git fsck
-        git gc
-        git push origin --all --force --no-thin
-
-        #echo "Force syncing all tags"
-        #git tag -d $(git tag -l) > /dev/null
-        #git fetch tmp_upstream --tags --quiet
-        #git push origin --tags --force
-
-        echo "Removing tmp_upstream"
-        git remote rm tmp_upstream
-        git remote --verbose
+        sudo apt-get -y install git-remote-hg mercurial
+        sudo easy_install hg-git
