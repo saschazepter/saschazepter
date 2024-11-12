@@ -9,7 +9,7 @@ jobs:
   repo-sync:
     runs-on: ubuntu-latest
     env:
-      SOURCE_REPO: "https://www.mercurial-scm.org/repo/hg"
+      SOURCE_REPO: "hg::https://www.mercurial-scm.org/repo/hg"
       DEST_REPO: "https://${{ github.actor }}:${{ secrets.GH_PERSONAL_ACCESS_TOKEN }}@github.com/saschazepter/hg.git"
     steps:
     - uses: actions/checkout@v4
