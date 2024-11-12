@@ -20,3 +20,6 @@ jobs:
         sudo apt-get update
         sudo apt-get -y install git-remote-hg mercurial python-setuptools
         sudo python -m pip install hg-git
+
+        hg clone "$SOURCE_REPO" .
+        hg push "$DEST_REPO"
