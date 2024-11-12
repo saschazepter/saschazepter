@@ -9,7 +9,7 @@ jobs:
   repo-sync:
     runs-on: ubuntu-latest
     env:
-      SOURCE_REPO: "hg::ssh://hg@foss.heptapod.net/mercurial/hg-git"
+      SOURCE_REPO: "hg::https://foss.heptapod.net/mercurial/hg-git"
       DEST_REPO: "https://${{ github.actor }}:${{ secrets.GH_PERSONAL_ACCESS_TOKEN }}@github.com/saschazepter/hg-git.git"
     steps:
     - uses: actions/checkout@v4
@@ -18,9 +18,14 @@ jobs:
     - run: |
         sudo add-apt-repository -y "ppa:git-core/ppa"
         sudo apt-get update
+        sudo apt-get -y install git-remote-hg    steps:
+    - uses: actions/checkout@v4
+      with:
+        persist-credentials: false
+    - run: |
+        sudo add-apt-repository -y "ppa:git-core/ppa"
+        sudo apt-get update
         sudo apt-get -y install git-remote-hg
-
-        mkdir ~/.ssh && ssh-keyscan foss.heptapod.net >> ~/.ssh/known_hosts
 
         git config --unset-all http."https://github.com/".extraheader || :
 
