@@ -19,4 +19,4 @@ jobs:
         sudo add-apt-repository -y "ppa:git-core/ppa"
         sudo apt-get update
         sudo apt-get -y install git-remote-hg mercurial python-setuptools
-        sudo easy_install hg-git
+        sudo python -m pip install hg-git
