@@ -20,7 +20,7 @@ jobs:
         sudo apt-get update
         sudo apt-get -y install git-remote-hg
 
-        ssh-keyscan foss.heptapod.net >> ~/.ssh/known_hosts
+        mkdir ~/.ssh && ssh-keyscan foss.heptapod.net >> ~/.ssh/known_hosts
 
         git config --unset-all http."https://github.com/".extraheader || :
 
