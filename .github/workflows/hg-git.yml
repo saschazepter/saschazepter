@@ -32,9 +32,9 @@ jobs:
         git fetch tmp_upstream --quiet
         git remote --verbose
 
-        git fsck
-        git gc
-        git fsck
+        export GIT_TRACE_PACKET=1
+        export GIT_TRACE=1
+        export GIT_CURL_VERBOSE=1
 
         echo "Pushing changings from tmp_upstream to origin"
         git push origin "refs/remotes/tmp_upstream/*:refs/heads/*" --force
