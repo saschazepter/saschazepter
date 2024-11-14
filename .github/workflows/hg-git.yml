@@ -37,6 +37,11 @@ jobs:
         export GIT_CURL_VERBOSE=1
 
         echo "Fetching tmp_upstream"
+        #git config remote.origin.fetch "+refs/heads/*:refs/remotes/origin/*"
+        #git config remote.origin.fetch "+refs/heads/*:refs/remotes/origin/*"
+        #git fetch --unshallow --update-head-ok origin '+refs/heads/*:refs/heads/*'
+        #git fetch --depth=2147483647
+        #git fetch --unshallow --depth=2147483647 --update-head-ok tmp_upstream '+refs/heads/*:refs/heads/*'
         git fetch tmp_upstream --unshallow --quiet
         git remote --verbose
 
