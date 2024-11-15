@@ -29,12 +29,12 @@ jobs:
         git remote add tmp_upstream "$SOURCE_REPO"
 
         #git config --global http.version HTTP/1.1
-        git config --global pack.window 1
-        git config --global pack.depth 1
+        #git config --global pack.window 1
+        #git config --global pack.depth 1
 
-        export GIT_TRACE_PACKET=1
-        export GIT_TRACE=1
-        export GIT_CURL_VERBOSE=1
+        #export GIT_TRACE_PACKET=1
+        #export GIT_TRACE=1
+        #export GIT_CURL_VERBOSE=1
 
         echo "Fetching tmp_upstream"
         #git config remote.origin.fetch "+refs/heads/*:refs/remotes/origin/*"
@@ -42,15 +42,17 @@ jobs:
         #git fetch --unshallow --update-head-ok origin '+refs/heads/*:refs/heads/*'
         #git fetch --depth=2147483647
         #git fetch --unshallow --depth=2147483647 --update-head-ok tmp_upstream '+refs/heads/*:refs/heads/*'
-        git fetch tmp_upstream --unshallow --quiet
+        #git fetch tmp_upstream --unshallow --quiet
+        git fetch tmp_upstream --quiet
         #git fsck --force
-        git-repair
+        git-repair --force
+        #git bundle create
         git remote --verbose
 
         echo "Pushing changings from tmp_upstream to origin"
-        #git push origin "refs/remotes/tmp_upstream/*:refs/heads/*" --force
+        git push origin "refs/remotes/tmp_upstream/*:refs/heads/*" --force
         #git push origin --all --force
-        git push origin
+        #git push origin
 
         echo "Force syncing all tags"
         git tag -d $(git tag -l) > /dev/null
