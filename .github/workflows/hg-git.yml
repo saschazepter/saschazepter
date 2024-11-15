@@ -44,6 +44,7 @@ jobs:
         #git fetch --depth=2147483647
         #git fetch --unshallow --depth=2147483647 --update-head-ok tmp_upstream '+refs/heads/*:refs/heads/*'
         git fetch tmp_upstream --unshallow --quiet
+        git fsck --force
         git remote --verbose
 
         echo "Pushing changings from tmp_upstream to origin"
