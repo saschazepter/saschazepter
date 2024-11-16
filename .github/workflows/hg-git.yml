@@ -18,22 +18,25 @@ jobs:
     - run: |
         sudo add-apt-repository -y "ppa:git-core/ppa"
         sudo apt-get update
-        sudo apt-get -y install git-remote-hg git-repair
+        sudo apt-get -y install git-remote-hg git-repair hg-git mercurial
 
         git config --unset-all http."https://github.com/".extraheader || :
 
-        git config core.repositoryformatversion 0
-        git config core.filemode false
-        git config core.bare true
-        git config core.symlinks false
-        git config core.ignorecase true
-        git config http.postBuffer 2097152000
+        hg clone -U "https://foss.heptapod.net/mercurial/hg-git" .
+        #hg push
 
-        echo "Resetting origin to: $DEST_REPO"
-        git remote set-url origin "$DEST_REPO"
+        #git config core.repositoryformatversion 0
+        #git config core.filemode false
+        #git config core.bare true
+        #git config core.symlinks false
+        #git config core.ignorecase true
+        #git config http.postBuffer 2097152000
 
-        echo "Adding tmp_upstream $SOURCE_REPO"
-        git remote add tmp_upstream "$SOURCE_REPO"
+        #echo "Resetting origin to: $DEST_REPO"
+        #git remote set-url origin "$DEST_REPO"
+
+        #echo "Adding tmp_upstream $SOURCE_REPO"
+        #git remote add tmp_upstream "$SOURCE_REPO"
 
         #git config --global http.version HTTP/1.1
         #git config --global pack.window 1
@@ -43,29 +46,29 @@ jobs:
         #export GIT_TRACE=1
         #export GIT_CURL_VERBOSE=1
 
-        echo "Fetching tmp_upstream"
+        #echo "Fetching tmp_upstream"
         #git config remote.origin.fetch "+refs/heads/*:refs/remotes/origin/*"
         #git config remote.origin.fetch "+refs/heads/*:refs/remotes/origin/*"
         #git fetch --unshallow --update-head-ok origin '+refs/heads/*:refs/heads/*'
         #git fetch --depth=2147483647
         #git fetch --unshallow --depth=2147483647 --update-head-ok tmp_upstream '+refs/heads/*:refs/heads/*'
         #git fetch tmp_upstream --unshallow --quiet
-        git fetch tmp_upstream --quiet
+        #git fetch tmp_upstream --quiet
         #git fsck --force
         #git-repair --force
         #git bundle create
-        git remote --verbose
+        #git remote --verbose
 
-        echo "Pushing changings from tmp_upstream to origin"
+        #echo "Pushing changings from tmp_upstream to origin"
         #git push origin "refs/remotes/tmp_upstream/*:refs/heads/*" --force
         #git push origin --all --force
-        git push --mirror origin
+        #git push --mirror origin
 
-        echo "Force syncing all tags"
-        git tag -d $(git tag -l) > /dev/null
-        git fetch tmp_upstream --tags --quiet
-        git push origin --tags --force
+        #echo "Force syncing all tags"
+        #git tag -d $(git tag -l) > /dev/null
+        #git fetch tmp_upstream --tags --quiet
+        #git push origin --tags --force
 
-        echo "Removing tmp_upstream"
-        git remote rm tmp_upstream
-        git remote --verbose
+        #echo "Removing tmp_upstream"
+        #git remote rm tmp_upstream
+        #git remote --verbose
