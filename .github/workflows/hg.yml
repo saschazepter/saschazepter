@@ -37,7 +37,10 @@ jobs:
         git remote --verbose
 
         echo "Pushing changings from tmp_upstream to origin"
-        git push origin --all --force; git push origin "*:*" --force; git push origin --tags --force
+        git push origin --all --force; git push origin "*:*" --force
+
+        echo "Force syncing all tags"
+        git push origin --tags --force
 
         echo "Removing tmp_upstream"
         git remote rm tmp_upstream
