@@ -36,6 +36,8 @@ jobs:
         git filter-repo --invert-paths --path-glob '*.git' --force; git remote set-url origin "$DEST_REPO"
         git remote --verbose
 
+        git branch -m "branches/0.10.x%3Aci-trigger-heptapod" "branches/0.10.x/ci-trigger-heptapod"
+
         echo "Pushing changings from tmp_upstream to origin"
         git push --mirror origin
 
