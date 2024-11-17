@@ -52,8 +52,8 @@ jobs:
         #git fetch --unshallow --depth=2147483647 --update-head-ok tmp_upstream '+refs/heads/*:refs/heads/*'
         #git fetch tmp_upstream --unshallow --quiet
         git fetch tmp_upstream --quiet --update-head-ok -k --update-shallow --unshallow
-        #git fsck --force
-        #git-repair --force
+        git fsck --force
+        git-repair --force
         #git bundle create
         #git remote --verbose
 
