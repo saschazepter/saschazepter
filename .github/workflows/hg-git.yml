@@ -30,7 +30,7 @@ jobs:
         git filter-repo --invert-paths --path-glob '*.git' --force
 
         echo "Resetting origin to: $DEST_REPO"
-        git remote set-url origin "$DEST_REPO"
+        git remote add origin "$DEST_REPO"
         git remote --verbose
 
         echo "Pushing changings from tmp_upstream to origin"
