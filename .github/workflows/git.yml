@@ -16,9 +16,9 @@ jobs:
     #  with:
     #    persist-credentials: false
     - run: |
-        sudo add-apt-repository -y "ppa:git-core/ppa"
-        sudo apt-get update
-        sudo apt-get -y install git-remote-hg git-filter-repo
+        #sudo add-apt-repository -y "ppa:git-core/ppa"
+        #sudo apt-get update
+        #sudo apt-get -y install git-remote-hg git-filter-repo
 
         git clone --mirror "$SOURCE_REPO" .
 
