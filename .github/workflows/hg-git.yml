@@ -32,11 +32,10 @@ jobs:
 
         echo "Fetching tmp_upstream"
         git fetch tmp_upstream --quiet
-        git filter-repo --invert-paths --path-glob '*.git' --force
         git remote --verbose
 
         echo "Pushing changings from tmp_upstream to origin"
-        git push --mirror origin
+        git filter-repo --invert-paths --path-glob '*.git' --force; git push --mirror origin
 
         echo "Removing tmp_upstream"
         git remote rm tmp_upstream
