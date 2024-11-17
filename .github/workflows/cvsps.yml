@@ -12,10 +12,16 @@ jobs:
       SOURCE_REPO: "https://github.com/mirror/cvsps.git"
       DEST_REPO: "https://${{ github.actor }}:${{ secrets.GH_PERSONAL_ACCESS_TOKEN }}@github.com/saschazepter/cvsps.git"
     steps:
-    - uses: actions/checkout@v4
-      with:
-        persist-credentials: false
+    #- uses: actions/checkout@v4
+    #  with:
+    #    persist-credentials: false
     - run: |
+        #sudo add-apt-repository -y "ppa:git-core/ppa"
+        #sudo apt-get update
+        #sudo apt-get -y install git-remote-hg
+
+        git clone --mirror "$SOURCE_REPO" .
+
         git config --unset-all http."https://github.com/".extraheader || :
 
         echo "Resetting origin to: $DEST_REPO"
@@ -29,13 +35,9 @@ jobs:
         git remote --verbose
 
         echo "Pushing changings from tmp_upstream to origin"
-        git push origin "refs/remotes/tmp_upstream/*:refs/heads/*" --force
-
-        echo "Force syncing all tags"
-        git tag -d $(git tag -l) > /dev/null
-        git fetch tmp_upstream --tags --quiet
-        git push origin --tags --force
+        git push --mirror origin
 
         echo "Removing tmp_upstream"
         git remote rm tmp_upstream
         git remote --verbose
+  
