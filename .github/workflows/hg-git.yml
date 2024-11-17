@@ -20,10 +20,10 @@ jobs:
         sudo apt-get update
         sudo apt-get -y install git-remote-hg git-filter-repo
 
-        git config --unset-all http."https://github.com/".extraheader || :
-
         echo "Mirroring remote repository: $SOURCE_REPO"
         git clone --mirror "$SOURCE_REPO" .
+
+        git config --unset-all http."https://github.com/".extraheader || :
 
         echo "Resetting origin to: $DEST_REPO"
         git remote set-url origin "$DEST_REPO"
