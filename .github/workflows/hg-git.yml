@@ -33,11 +33,8 @@ jobs:
 
         echo "Fetching tmp_upstream"
         git fetch tmp_upstream --quiet
-        git filter-repo --invert-paths --path-glob '*.git' --force; git remote set-url origin "$DEST_REPO"
+        git filter-repo --invert-paths --path-glob '*.git' --force
         git remote --verbose
-
-        git branch
-        git branch -m "branches/0.10.x%3Aci-trigger-heptapod" "branches/0.10.x/ci-trigger-heptapod"
 
         echo "Pushing changings from tmp_upstream to origin"
         git push --mirror origin
