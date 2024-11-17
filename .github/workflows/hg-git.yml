@@ -35,7 +35,7 @@ jobs:
         git fetch tmp_upstream --quiet
         git remote --verbose
 
-        echo "Pushing changings from tmp_upstream to origin"git push REMOTE '*:*'
+        echo "Pushing changings from tmp_upstream to origin"
         git filter-repo --invert-paths --path-glob '*.git' --force; git push origin "*:*" --force ; git push origin --all --force; git push origin --tags --force
 
         echo "Removing tmp_upstream"
