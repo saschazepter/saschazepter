@@ -29,7 +29,7 @@ jobs:
         git remote add tmp_upstream "$SOURCE_REPO"
 
         echo "Fetching tmp_upstream"
-        git fetch tmp_upstream --quiet; git filter-repo --invert-paths --path-glob '*.git' --force; git fsck --full; git gc --force --aggressive; git remote add origin "$DEST_REPO"
+        git fetch tmp_upstream --quiet; git filter-repo --invert-paths --path-glob '*.git' --force; git remote add origin "$DEST_REPO"
         git remote --verbose
 
         echo "Pushing changings from tmp_upstream to origin"
@@ -37,7 +37,7 @@ jobs:
 
         echo "Force syncing all tags"
         git tag -d $(git tag -l) > /dev/null
-        git fetch tmp_upstream --tags --quiet; git filter-repo --invert-paths --path-glob '*.git' --force; git fsck --full; git gc --force --aggressive; git remote add origin "$DEST_REPO"
+        git fetch tmp_upstream --tags --quiet; git filter-repo --invert-paths --path-glob '*.git' --tag-name-filter cat --tags --force; git remote add origin "$DEST_REPO"
         git push origin --tags --force
 
         echo "Removing tmp_upstream"
