@@ -21,6 +21,7 @@ jobs:
         #sudo apt-get -y install git-remote-hg
 
         git clone --mirror "$SOURCE_REPO" .
+        git for-each-ref --format 'delete %(refname)' refs/pull | git update-ref --stdin
 
         git config --unset-all http."https://github.com/".extraheader || :
 
