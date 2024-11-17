@@ -22,9 +22,6 @@ jobs:
 
         git config --unset-all http."https://github.com/".extraheader || :
 
-        hg clone -U "https://foss.heptapod.net/mercurial/hg-git" .
-        #hg push
-
         #git config core.repositoryformatversion 0
         #git config core.filemode false
         #git config core.bare true
@@ -32,11 +29,11 @@ jobs:
         #git config core.ignorecase true
         #git config http.postBuffer 2097152000
 
-        #echo "Resetting origin to: $DEST_REPO"
-        #git remote set-url origin "$DEST_REPO"
+        echo "Resetting origin to: $DEST_REPO"
+        git remote set-url origin "$DEST_REPO"
 
-        #echo "Adding tmp_upstream $SOURCE_REPO"
-        #git remote add tmp_upstream "$SOURCE_REPO"
+        echo "Adding tmp_upstream $SOURCE_REPO"
+        git remote add tmp_upstream "$SOURCE_REPO"
 
         #git config --global http.version HTTP/1.1
         #git config --global pack.window 1
@@ -53,22 +50,22 @@ jobs:
         #git fetch --depth=2147483647
         #git fetch --unshallow --depth=2147483647 --update-head-ok tmp_upstream '+refs/heads/*:refs/heads/*'
         #git fetch tmp_upstream --unshallow --quiet
-        #git fetch tmp_upstream --quiet
+        git fetch tmp_upstream --quiet --update-head-ok -k
         #git fsck --force
         #git-repair --force
         #git bundle create
         #git remote --verbose
 
-        #echo "Pushing changings from tmp_upstream to origin"
-        #git push origin "refs/remotes/tmp_upstream/*:refs/heads/*" --force
-        #git push origin --all --force
-        #git push --mirror origin
+        echo "Pushing changings from tmp_upstream to origin"
+        git push origin "refs/remotes/tmp_upstream/*:refs/heads/*" --force
+        git push origin --all --force
+        git push --mirror origin
 
-        #echo "Force syncing all tags"
-        #git tag -d $(git tag -l) > /dev/null
-        #git fetch tmp_upstream --tags --quiet
-        #git push origin --tags --force
+        echo "Force syncing all tags"
+        git tag -d $(git tag -l) > /dev/null
+        git fetch tmp_upstream --tags --quiet
+        git push origin --tags --force
 
-        #echo "Removing tmp_upstream"
-        #git remote rm tmp_upstream
-        #git remote --verbose
+        echo "Removing tmp_upstream"
+        git remote rm tmp_upstream
+        git remote --verbose
