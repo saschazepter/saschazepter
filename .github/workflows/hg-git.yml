@@ -20,30 +20,24 @@ jobs:
         sudo apt-get update
         sudo apt-get -y install git-remote-hg git-filter-repo
 
+        git config --unset-all http."https://github.com/".extraheader || :
+
         echo "Mirroring remote repository: $SOURCE_REPO"
         git clone --mirror "$SOURCE_REPO" .
 
-        git config --unset-all http."https://github.com/".extraheader || :
-
-        #echo "Resetting origin to: $DEST_REPO"
+        echo "Resetting origin to: $DEST_REPO"
         git remote set-url origin "$DEST_REPO"
 
         echo "Adding tmp_upstream $SOURCE_REPO"
         git remote add tmp_upstream "$SOURCE_REPO"
 
         echo "Fetching tmp_upstream"
-        git fetch tmp_upstream --quiet;
+        git fetch tmp_upstream --quiet
         git filter-repo --invert-paths --path-glob '*.git' --force; git remote set-url origin "$DEST_REPO"
         git remote --verbose
 
         echo "Pushing changings from tmp_upstream to origin"
-        #git push origin "refs/remotes/tmp_upstream/*:refs/heads/*" --force
         git push --mirror origin
-
-        echo "Force syncing all tags"
-        #git tag -d $(git tag -l) > /dev/null
-        #git fetch tmp_upstream --tags --quiet; git filter-repo --invert-paths --path-glob '*.git' --force; git filter-branch --tag-name-filter cat --tags --all --force; git remote add origin "$DEST_REPO"
-        #git push origin --tags --force
 
         echo "Removing tmp_upstream"
         git remote rm tmp_upstream
