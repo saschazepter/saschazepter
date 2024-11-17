@@ -1,4 +1,4 @@
-t# File: .github/workflows/hg-git.yml
+# File: .github/workflows/hg-git.yml
 
 on:
 #  schedule:
