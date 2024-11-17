@@ -1,4 +1,4 @@
-# File: .github/workflows/hg-git.yml
+t# File: .github/workflows/hg-git.yml
 
 on:
 #  schedule:
@@ -21,7 +21,7 @@ jobs:
         sudo apt-get -y install git-remote-hg git-filter-repo
 
         #
-        git clone $SOURCE_REPO .
+        git clone --mirror $SOURCE_REPO .
 
         git config --unset-all http."https://github.com/".extraheader || :
 
