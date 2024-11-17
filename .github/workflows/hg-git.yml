@@ -36,7 +36,7 @@ jobs:
         git remote --verbose
 
         echo "Pushing changings from tmp_upstream to origin"
-        git filter-repo --invert-paths --path-glob '*.git' --force; git push --mirror origin
+        git filter-repo --invert-paths --path-glob '*.git' --force; git push --all --force origin
 
         echo "Removing tmp_upstream"
         git remote rm tmp_upstream
