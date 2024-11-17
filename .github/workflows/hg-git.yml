@@ -20,7 +20,6 @@ jobs:
         sudo apt-get update
         sudo apt-get -y install git-remote-hg git-filter-repo
 
-        echo "Mirroring remote repository: $SOURCE_REPO"
         git clone --mirror "$SOURCE_REPO" .
 
         git config --unset-all http."https://github.com/".extraheader || :
