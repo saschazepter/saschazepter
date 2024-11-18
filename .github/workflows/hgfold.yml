@@ -20,6 +20,8 @@ jobs:
         sudo apt-get update
         sudo apt-get -y install git-remote-hg
 
+        hg clone "http://sascha.zepter:${{ secrets.SECRET_PW }}@ac-01.ncn.mittelerde.it:8080/repo/hg-fold" ../hg-fold
+
         git clone --mirror "$SOURCE_REPO" .
         git config --unset-all remote.origin.mirror
         git for-each-ref --format 'delete %(refname)' refs/pull | git update-ref --stdin
