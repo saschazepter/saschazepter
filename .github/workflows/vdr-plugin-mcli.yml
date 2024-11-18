@@ -1,8 +1,8 @@
 # File: .github/workflows/vdr-plugin-mcli.yml
 
 on:
-  schedule:
-  - cron:  "*/15 * * * *"
+  #schedule:
+  #- cron:  "*/15 * * * *"
   workflow_dispatch:
 
 jobs:
