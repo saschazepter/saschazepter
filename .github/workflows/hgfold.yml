@@ -32,6 +32,10 @@ jobs:
         echo "Adding tmp_upstream $SOURCE_REPO"
         git remote add tmp_upstream "$SOURCE_REPO"
 
+        export GIT_TRACE_PACKET=1
+        export GIT_TRACE=1
+        export GIT_CURL_VERBOSE=1
+
         echo "Fetching tmp_upstream"
         git fetch tmp_upstream --quiet
         git remote --verbose
