@@ -1,4 +1,4 @@
-# File: .github/workflows/hgfold.yml
+# File: .github/workflows/redmine_http_basic_authentication.yml
 
 on:
   #schedule:
