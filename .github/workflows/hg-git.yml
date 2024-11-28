@@ -34,11 +34,11 @@ jobs:
         git remote add tmp_upstream "$SOURCE_REPO"
 
         echo "Fetching tmp_upstream"
-        git fetch tmp_upstream --quiet
+        git fetch tmp_upstream --quiet; git filter-repo --invert-paths --path-glob '*.git' --force
         git remote --verbose
 
         echo "Pushing changings from tmp_upstream to origin"
-        git filter-repo --invert-paths --path-glob '*.git' --force; for branch in $(git for-each-ref --format='%(refname:short)' refs/heads | sed -e 's|heads/||g'); do
+        for branch in $(git for-each-ref --format='%(refname:short)' refs/heads | sed -e 's|heads/||g'); do
           git branch -M "${branch}" "${REPO_PREFIX}${branch}";
         done; git push origin --all --force; git push origin "*:*" --force
 
