@@ -1,4 +1,4 @@
-# File: .github/workflows/vdr-plugin-dvbapi.yml
+# File: .github/workflows/SwissQRBillDemo.yml
 
 on:
   schedule:
@@ -9,8 +9,8 @@ jobs:
   repo-sync:
     runs-on: ubuntu-latest
     env:
-      SOURCE_REPO: "https://github.com/manio/vdr-plugin-dvbapi.git"
-      DEST_REPO: "https://${{ github.actor }}:${{ secrets.GH_PERSONAL_ACCESS_TOKEN }}@github.com/saschazepter/vdr-plugin-dvbapi.git"
+      SOURCE_REPO: "https://github.com/manuelbl/SwissQRBillDemo.git"
+      DEST_REPO: "https://${{ github.actor }}:${{ secrets.GH_PERSONAL_ACCESS_TOKEN }}@github.com/saschazepter/SwissQRBillDemo.git"
       REPO_PREFIX: ""
     steps:
     #- uses: actions/checkout@v4
@@ -47,4 +47,4 @@ jobs:
 
         echo "Removing tmp_upstream"
         git remote rm tmp_upstream
-        git remote --verbose
+        git remote --verbose 

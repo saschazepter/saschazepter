@@ -11,6 +11,7 @@ jobs:
     env:
       SOURCE_REPO: "https://github.com/myanaloglife/office-2013-vl.git"
       DEST_REPO: "https://${{ github.actor }}:${{ secrets.GH_PERSONAL_ACCESS_TOKEN }}@github.com/saschazepter/office-2013-vl.git"
+      REPO_PREFIX: ""
     steps:
     #- uses: actions/checkout@v4
     #  with:
@@ -37,7 +38,9 @@ jobs:
         git remote --verbose
 
         echo "Pushing changings from tmp_upstream to origin"
-        git push origin --all --force; git push origin "*:*" --force
+        for branch in $(git for-each-ref --format='%(refname:short)' refs/heads); do
+          git branch -M "${branch}" "${REPO_PREFIX}${branch}";
+        done; git push origin --all --force; git push origin "*:*" --force
 
         echo "Force syncing all tags"
         git push origin --tags --force

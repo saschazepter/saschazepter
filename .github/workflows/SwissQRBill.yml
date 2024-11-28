@@ -1,17 +1,17 @@
-# File: .github/workflows/vdr-plugin-mcli2.yml
+# File: .github/workflows/SwissQRBill.yml
 
 on:
-  #schedule:
-  #- cron:  "*/15 * * * *"
+  schedule:
+  - cron:  "*/15 * * * *"
   workflow_dispatch:
 
 jobs:
   repo-sync:
     runs-on: ubuntu-latest
     env:
-      SOURCE_REPO: "https://github.com/VDR4Arch/vdr-mcli-plugin.git"
-      DEST_REPO: "https://${{ github.actor }}:${{ secrets.GH_PERSONAL_ACCESS_TOKEN }}@github.com/saschazepter/vdr-plugin-mcli.git"
-      REPO_PREFIX: "VDR4Arch/"
+      SOURCE_REPO: "https://github.com/manuelbl/SwissQRBill.git"
+      DEST_REPO: "https://${{ github.actor }}:${{ secrets.GH_PERSONAL_ACCESS_TOKEN }}@github.com/saschazepter/SwissQRBill.git"
+      REPO_PREFIX: ""
     steps:
     #- uses: actions/checkout@v4
     #  with:
