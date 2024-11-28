@@ -38,10 +38,13 @@ jobs:
         git remote --verbose
 
         echo "Pushing changings from tmp_upstream to origin"
+        git for-each-ref
+        git branch -a
+        git branch -r
         for branch in $(git for-each-ref --format='%(refname:short)' refs/heads); do
           echo git branch -M "${branch}" "${REPO_PREFIX}${branch}";
           git branch -M "${branch}" "${REPO_PREFIX}${branch}";
-        done; git push origin --all --force; git push origin "*:*" --force
+        done; git push origin --all --force; git push origin "*:*" --forces
 
         echo "Force syncing all tags"
         git push origin --tags --force
