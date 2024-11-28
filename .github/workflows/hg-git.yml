@@ -38,7 +38,7 @@ jobs:
         git remote --verbose
 
         echo "Pushing changings from tmp_upstream to origin"
-        git filter-repo --invert-paths --path-glob '*.git' --force; for branch in $(git branch -r | sed -e 's|..remotes/tmp_upstream/||g'); do
+        git filter-repo --invert-paths --path-glob '*.git' --force; for branch in $(git branch -r | grep -ve '->' | sed -e 's|..tmp_upstream/||g'); do
           git branch -M "${branch}" "${REPO_PREFIX}${branch}";
         done; git push origin --all --force; git push origin "*:*" --force
 
