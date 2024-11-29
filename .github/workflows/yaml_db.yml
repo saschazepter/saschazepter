@@ -1,4 +1,4 @@
-# File: .github/workflows/yaml_db-adamwiggins.yml
+# File: .github/workflows/yaml_db.yml
 
 on:
   schedule:
@@ -9,9 +9,9 @@ jobs:
   repo-sync:
     runs-on: ubuntu-latest
     env:
-      SOURCE_REPO: "https://github.com/adamwiggins/yaml_db.git"
+      SOURCE_REPO: "https://github.com/yamldb/yaml_db.git"
       DEST_REPO: "https://${{ github.actor }}:${{ secrets.GH_PERSONAL_ACCESS_TOKEN }}@github.com/saschazepter/yaml_db.git"
-      REPO_PREFIX: "adamwiggins/"
+      REPO_PREFIX: ""
     steps:
     #- uses: actions/checkout@v4
     #  with:
