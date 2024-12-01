@@ -9,7 +9,7 @@ jobs:
   repo-sync:
     runs-on: ubuntu-latest
     env:
-      SOURCE_REPO: "https://git.tvdr.de/vdr.git"
+      SOURCE_REPO: "https://github.com/vdr-projects/vdr.git"
       DEST_REPO: "https://${{ github.actor }}:${{ secrets.GH_PERSONAL_ACCESS_TOKEN }}@github.com/saschazepter/vdr.git"
       REPO_PREFIX: ""
     steps:
