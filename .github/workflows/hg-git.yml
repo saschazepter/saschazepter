@@ -17,11 +17,12 @@ jobs:
     #  with:
     #    persist-credentials: false
     - run: |
-        sudo add-apt-repository -y "ppa:git-core/ppa"
+        sudo add-apt-repository -y "ppa:git-core/candidate"
         sudo apt-get update
-        sudo apt-get -y install git-filter-repo
-        curl https://raw.githubusercontent.com/saschazepter/git-remote-hg/master/git-remote-hg --create-dirs -o ~/bin/git-remote-hg
-        chmod +x ~/bin/git-remote-hg
+        sudo apt-get -y install git-remote-hg git-filter-repo
+        #curl https://raw.githubusercontent.com/saschazepter/git-remote-hg/master/git-remote-hg --create-dirs -o ~/bin/git-remote-hg
+        #chmod +x ~/bin/git-remote-hg
+        which git-remote-hg
 
         git clone --mirror "$SOURCE_REPO" .
         git config core.notesRef refs/notes/hg; git config --unset-all remote.origin.mirror
