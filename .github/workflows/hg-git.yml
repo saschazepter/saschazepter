@@ -20,12 +20,9 @@ jobs:
     - run: |
         sudo add-apt-repository -y "ppa:git-core/ppa"
         sudo apt-get update
-        #sudo apt-get -y install git-remote-hg git-filter-repo
         sudo apt-get -y install git-filter-repo
-        curl https://raw.githubusercontent.com/saschazepter/git-remote-hg/master/git-remote-hg --create-dirs -o ~/.local/bin/git-remote-hg || :
-        chmod +x ~/.local/bin/git-remote-hg || :
-        which git-remote-hg || :
-        echo $PATH
+        curl https://raw.githubusercontent.com/saschazepter/git-remote-hg/master/git-remote-hg --create-dirs -o ~/.local/bin/git-remote-hg
+        chmod +x ~/.local/bin/git-remote-hg
 
         git clone --mirror "$SOURCE_REPO" .
         git config core.notesRef refs/notes/hg; git config --unset-all remote.origin.mirror
