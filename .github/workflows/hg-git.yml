@@ -7,7 +7,7 @@ on:
 
 jobs:
   repo-sync:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     env:
       SOURCE_REPO: "hg::https://foss.heptapod.net/mercurial/hg-git"
       DEST_REPO: "https://${{ github.actor }}:${{ secrets.GH_PERSONAL_ACCESS_TOKEN }}@github.com/saschazepter/hg-git.git"
@@ -19,9 +19,10 @@ jobs:
     - run: |
         sudo add-apt-repository -y "ppa:git-core/ppa"
         sudo apt-get update
-        sudo apt-get -y install git-filter-repo
-        curl https://raw.githubusercontent.com/saschazepter/git-remote-hg/master/git-remote-hg --create-dirs -o ~/.local/bin/git-remote-hg
-        chmod +x ~/.local/bin/git-remote-hg
+        sudo apt-get -y install git-filter-repo git-remote-hg
+        #curl https://raw.githubusercontent.com/saschazepter/git-remote-hg/master/git-remote-hg --create-dirs -o ~/.local/bin/git-remote-hg
+        #chmod +x ~/.local/bin/git-remote-hg
+        git-remote-hg --version || :
 
         git clone --mirror "$SOURCE_REPO" .
         git config core.notesRef refs/notes/hg; git config --unset-all remote.origin.mirror
