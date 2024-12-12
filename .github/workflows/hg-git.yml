@@ -20,7 +20,7 @@ jobs:
         sudo add-apt-repository -y "ppa:git-core/ppa"
         sudo apt-get update
         sudo apt-get -y install git-filter-repo
-        curl https://raw.githubusercontent.com/mnauw/git-remote-hg/refs/tags/v1.0.4/git-remote-hg --create-dirs -o ~/.local/bin/git-remote-hg
+        curl https://raw.githubusercontent.com/mnauw/git-remote-hg/refs/tags/v1.0.4/git-remote-hg --no-progress-meter --create-dirs -o ~/.local/bin/git-remote-hg
         chmod +x ~/.local/bin/git-remote-hg
 
         git clone --mirror "$SOURCE_REPO" .
