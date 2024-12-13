@@ -24,7 +24,7 @@ jobs:
         chmod +x ~/.local/bin/git-remote-hg; sed -i -e "s/re.\(compile\|match\)(b'/re.\1(br'/g" ~/.local/bin/git-remote-hg
 
         git clone --mirror "$SOURCE_REPO" .
-        git config core.notesRef refs/notes/hg; git config --unset-all remote.origin.mirror
+        git config core.notesRef refs/notes/hg; git config --unset-all remote.origin.mirror || :
         git for-each-ref --format 'delete %(refname)' refs/pull | git update-ref --stdin
 
         git config --unset-all http."https://github.com/".extraheader || :
