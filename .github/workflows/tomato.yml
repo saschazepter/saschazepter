@@ -9,7 +9,7 @@ jobs:
   repo-sync:
     runs-on: ubuntu-latest
     env:
-      SOURCE_REPO: "https://github.com/saschazepter/tomato.git"
+      SOURCE_REPO: "https://github.com/tomatofirmware/tomato.git"
       DEST_REPO: "https://${{ github.actor }}:${{ secrets.GH_PERSONAL_ACCESS_TOKEN }}@github.com/saschazepter/tomato.git"
       REPO_PREFIX: ""
     steps:
