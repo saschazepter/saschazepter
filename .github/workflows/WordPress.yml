@@ -10,7 +10,8 @@ jobs:
     runs-on: ubuntu-latest
     env:
       SOURCE_REPO: "https://github.com/WordPress/WordPress.git"
-      DEST_REPO: "https://${{ github.actor }}:${{ secrets.GH_PERSONAL_ACCESS_TOKEN }}@github.com/saschazepter/PSAppDeployToolkit.git"
+      DEST_REPO: "https://${{ github.actor }}:${{ secrets.GH_PERSONAL_ACCESS_TOKEN }}@github.com/saschazepter/WordPress.git"
+      REPO_PREFIX: ""
     steps:
     #- uses: actions/checkout@v4
     #  with:
@@ -44,9 +45,8 @@ jobs:
         done; git push origin --all --force; git push origin "*:*" --force
 
         echo "Force syncing all tags"
-        for tag in $(git for-each-ref --format='%(refname:short)' refs/tags); do
-          git tag -d "${tag}";
-          git tag "${REPO_PREFIX}${tag}" "refs/tags/${tag}";
+        for tag in $(git tag -l); do
+          git tag "${REPO_PREFIX}${tag}" "${tag}^{}" 2> /dev/null && git tag -d "${tag}";
         done;
         git push origin --tags --force
 
