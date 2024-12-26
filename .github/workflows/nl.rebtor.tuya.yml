@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       SOURCE_REPO: "https://github.com/rebtor/nl.rebtor.tuya.git"
-      DEST_REPO: "https://${{ github.actor }}:${{ secrets.GH_PERSONAL_ACCESS_TOKEN }}@github.com/saschazepter/APatch.git"
+      DEST_REPO: "https://${{ github.actor }}:${{ secrets.GH_PERSONAL_ACCESS_TOKEN }}@github.com/saschazepter/nl.rebtor.tuya.git"
       REPO_PREFIX: ""
     steps:
     #- uses: actions/checkout@v4
