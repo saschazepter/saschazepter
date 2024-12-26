@@ -45,7 +45,7 @@ jobs:
         done; git push origin --all --force; git push origin "*:*" --force
 
         echo "Force syncing all tags"
-        for tag in $(git tag -l); do
+        git ls-remote --tags --refs origin | cut -f2 | xargs git push origin --delete; for tag in $(git tag -l); do
           git tag "${REPO_PREFIX}${tag}" "${tag}^{}" 2> /dev/null && git tag -d "${tag}";
         done;
         git push origin --tags --force
