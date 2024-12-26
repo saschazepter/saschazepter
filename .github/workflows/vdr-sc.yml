@@ -46,6 +46,10 @@ jobs:
 
 
         echo "Force syncing all tags"
+        for tag in $(git for-each-ref --format='%(refname:short)' refs/tags); do
+          git tag -d "${tag}";
+          git tag "${REPO_PREFIX}${tag}" "refs/tags/${tag}";
+        done;
         git push origin --tags --force
 
         echo "Removing tmp_upstream"
