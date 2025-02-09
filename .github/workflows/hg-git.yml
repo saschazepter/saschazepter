@@ -23,7 +23,7 @@ jobs:
         curl https://raw.githubusercontent.com/mnauw/git-remote-hg/refs/heads/master/git-remote-hg --no-progress-meter --create-dirs -o ~/.local/bin/git-remote-hg
         chmod +x ~/.local/bin/git-remote-hg; sed -i -e "s/re.\(compile\|match\)(b'/re.\1(br'/g" ~/.local/bin/git-remote-hg
 
-        git clone --mirror "$SOURCE_REPO" . || cat /home/runner/work/saschazepter/saschazepter/fast_import_crash_*
+        git clone --mirror "$SOURCE_REPO" . || ls -la /home/runner/work/saschazepter/saschazepter/
         git config core.notesRef refs/notes/hg; git config --unset-all remote.origin.mirror || :
         git for-each-ref --format 'delete %(refname)' refs/pull | git update-ref --stdin
 
