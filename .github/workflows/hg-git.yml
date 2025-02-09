@@ -1,8 +1,8 @@
 # File: .github/workflows/hg-git.yml
 
 on:
-  schedule:
-  - cron:  "*/15 * * * *"
+  #schedule:
+  #- cron:  "*/15 * * * *"
   workflow_dispatch:
 
 jobs:
@@ -19,7 +19,7 @@ jobs:
     - run: |
         sudo add-apt-repository -y "ppa:git-core/ppa"
         sudo apt-get update
-        sudo apt-get -y install git-remote-hg git-filter-repo
+        sudo apt-get -y install git-filter-repo
         #curl https://raw.githubusercontent.com/mnauw/git-remote-hg/refs/heads/master/git-remote-hg --no-progress-meter --create-dirs -o ~/.local/bin/git-remote-hg
         #chmod +x ~/.local/bin/git-remote-hg; sed -i -e "s/re.\(compile\|match\)(b'/re.\1(br'/g" ~/.local/bin/git-remote-hg
 
