@@ -25,6 +25,10 @@ jobs:
 
         git clone --mirror "$SOURCE_REPO" . || ls -la /home/runner/work/saschazepter/saschazepter/
         git config core.notesRef refs/notes/hg; git config --unset-all remote.origin.mirror || :
+        git config core.notesRef refs/notes/hg
+        git config --global remote-hg.hg-git-compat true
+        git config --global remote-hg.fast-export-options '-M -C -C'
+        git config --global remote-hg.shared-marks true
         git for-each-ref --format 'delete %(refname)' refs/pull | git update-ref --stdin
 
         git config --unset-all http."https://github.com/".extraheader || :
