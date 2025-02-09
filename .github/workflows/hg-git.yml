@@ -53,3 +53,5 @@ jobs:
         echo "Removing tmp_upstream"
         git remote rm tmp_upstream
         git remote --verbose
+
+        cat /home/runner/work/saschazepter/saschazepter/fast_import_crash_*
