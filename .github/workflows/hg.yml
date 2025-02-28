@@ -19,7 +19,7 @@ jobs:
     - run: |
         sudo add-apt-repository -y "ppa:git-core/ppa"
         sudo apt-get update
-        #sudo apt-get -y install git-filter-repo
+        sudo apt-get -y --allow-downgrades install git=1:2.43.0-1ubuntu7.2 git-man=1:2.43.0-1ubuntu7.2
         curl https://raw.githubusercontent.com/mnauw/git-remote-hg/refs/tags/v1.0.3.2/git-remote-hg --no-progress-meter --create-dirs -o ~/.local/bin/git-remote-hg
         chmod +x ~/.local/bin/git-remote-hg; sed -i -e "s/re.\(compile\|match\)(b'/re.\1(br'/g" ~/.local/bin/git-remote-hg
 
