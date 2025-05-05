@@ -23,7 +23,7 @@ jobs:
         curl https://raw.githubusercontent.com/mnauw/git-remote-hg/refs/heads/master/git-remote-hg --no-progress-meter --create-dirs -o ~/.local/bin/git-remote-hg
         chmod +x ~/.local/bin/git-remote-hg
 
-        git config --global remote-hg.hg-git-compat true; git config --global remote-hg.dotfile-suffix _; git clone --mirror "$SOURCE_REPO" .
+        git config --global remote-hg.hg-git-compat true; git clone --mirror "$SOURCE_REPO" .
         git config core.notesRef refs/notes/hg; git config --unset-all remote.origin.mirror || :
         git for-each-ref --format 'delete %(refname)' refs/pull | git update-ref --stdin
 
