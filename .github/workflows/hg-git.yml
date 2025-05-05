@@ -23,7 +23,7 @@ jobs:
         sudo apt-get -y --allow-downgrades install git git-man git-filter-repo
         #curl https://raw.githubusercontent.com/mnauw/git-remote-hg/refs/tags/v1.0.3.2/git-remote-hg --no-progress-meter --create-dirs -o ~/.local/bin/git-remote-hg
         curl https://raw.githubusercontent.com/mnauw/git-remote-hg/refs/heads/master/git-remote-hg --no-progress-meter --create-dirs -o ~/.local/bin/git-remote-hg
-        chmod +x ~/.local/bin/git-remote-hg; sed -i -e "s/re.\(compile\|match\)(b'/re.\1(br'/g" ~/.local/bin/git-remote-hg
+        chmod +x ~/.local/bin/git-remote-hg; #sed -i -e "s/re.\(compile\|match\)(b'/re.\1(br'/g" ~/.local/bin/git-remote-hg
 
         git config --global remote-hg.hg-git-compat true; git config --global remote-hg.dotfile-suffix _; git clone --mirror "$SOURCE_REPO" .
         git config core.notesRef refs/notes/hg; git config --unset-all remote.origin.mirror || :
