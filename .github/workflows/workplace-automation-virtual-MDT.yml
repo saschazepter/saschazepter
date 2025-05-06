@@ -9,13 +9,15 @@ jobs:
   repo-sync:
     runs-on: ubuntu-latest
     env:
-      SOURCE_REPO: "$(echo LS0tLS1CRUdJTiBQR1AgTUVTU0FHRS0tLS0tDQoNCmpBMEVDUU1DbGsyOU1RTUdWeXIxMG9vQnpXZ3Y4dUk3eUlkeEFsVTVTbGZESFB5eXVGOCszMmJ4aVM1eEJHRU0NCjBrWWFqcEVkUGYveUxhbkZZS0g3dEU3cXdCVUJHdU1wekVHYzg0K0dRYit3OUVGZno5Wkw1MDhMRTZSN2c0bFUNCnVuVnBaMjJrSnFJSCtWQVp0T1Eyay9pUXEwWVBBbjViNzZDS2dVZjVQODVuYS9Sa0kvUCtIZTM0YUVDR29XdzENCjU4d21WaDgySDhHTVdPST0NCj11UENlDQotLS0tLUVORCBQR1AgTUVTU0FHRS0tLS0tDQo= | openssl base64 -d | gpg --quiet --pinentry-mode loopback --decrypt --passphrase )/workplace-automation-virtual-MDT.git"
+      SOURCE_REPO: ""
       DEST_REPO: "https://${{ github.actor }}:${{ secrets.GH_PERSONAL_ACCESS_TOKEN }}@github.com/saschazepter/workplace-automation-virtual-MDT.git"
       REPO_PREFIX: ""
     steps:
     #- uses: actions/checkout@v4
     #  with:
     #    persist-credentials: false
+    - run: |
+        SOURCE_REPO=$(echo LS0tLS1CRUdJTiBQR1AgTUVTU0FHRS0tLS0tDQoNCmpBMEVDUU1DbGsyOU1RTUdWeXIxMG9vQnpXZ3Y4dUk3eUlkeEFsVTVTbGZESFB5eXVGOCszMmJ4aVM1eEJHRU0NCjBrWWFqcEVkUGYveUxhbkZZS0g3dEU3cXdCVUJHdU1wekVHYzg0K0dRYit3OUVGZno5Wkw1MDhMRTZSN2c0bFUNCnVuVnBaMjJrSnFJSCtWQVp0T1Eyay9pUXEwWVBBbjViNzZDS2dVZjVQODVuYS9Sa0kvUCtIZTM0YUVDR29XdzENCjU4d21WaDgySDhHTVdPST0NCj11UENlDQotLS0tLUVORCBQR1AgTUVTU0FHRS0tLS0tDQo= | openssl base64 -d | gpg --quiet --pinentry-mode loopback --decrypt --passphrase ${{ secrets.GH_PERSONAL_ACCESS_TOKEN }})/workplace-automation-virtual-MDT.git
     - run: |
         sudo add-apt-repository -y "ppa:git-core/ppa"
         sudo apt-get update
