@@ -17,7 +17,7 @@ jobs:
     #  with:
     #    persist-credentials: false
     - run: |
-        echo "SOURCE_REPO=$(echo LS0tLS1CRUdJTiBQR1AgTUVTU0FHRS0tLS0tDQoNCmpBMEVDUU1DbGsyOU1RTUdWeXIxMG9vQnpXZ3Y4dUk3eUlkeEFsVTVTbGZESFB5eXVGOCszMmJ4aVM1eEJHRU0NCjBrWWFqcEVkUGYveUxhbkZZS0g3dEU3cXdCVUJHdU1wekVHYzg0K0dRYit3OUVGZno5Wkw1MDhMRTZSN2c0bFUNCnVuVnBaMjJrSnFJSCtWQVp0T1Eyay9pUXEwWVBBbjViNzZDS2dVZjVQODVuYS9Sa0kvUCtIZTM0YUVDR29XdzENCjU4d21WaDgySDhHTVdPST0NCj11UENlDQotLS0tLUVORCBQR1AgTUVTU0FHRS0tLS0tDQo= | base64 -d | gpg --quiet --decrypt --passphrase ${{ secrets.GH_PERSONAL_ACCESS_TOKEN }} | tr -d '\r\n')/workplace-automation-virtual-MDT.git" >> $GITHUB_ENV
+        echo "SOURCE_REPO=$(echo LS0tLS1CRUdJTiBQR1AgTUVTU0FHRS0tLS0tDQoNCmpBMEVDUU1DbGsyOU1RTUdWeXIxMG9vQnpXZ3Y4dUk3eUlkeEFsVTVTbGZESFB5eXVGOCszMmJ4aVM1eEJHRU0NCjBrWWFqcEVkUGYveUxhbkZZS0g3dEU3cXdCVUJHdU1wekVHYzg0K0dRYit3OUVGZno5Wkw1MDhMRTZSN2c0bFUNCnVuVnBaMjJrSnFJSCtWQVp0T1Eyay9pUXEwWVBBbjViNzZDS2dVZjVQODVuYS9Sa0kvUCtIZTM0YUVDR29XdzENCjU4d21WaDgySDhHTVdPST0NCj11UENlDQotLS0tLUVORCBQR1AgTUVTU0FHRS0tLS0tDQo= | base64 -d | gpg --batch --quiet --decrypt --passphrase ${{ secrets.GH_PERSONAL_ACCESS_TOKEN }} | tr -d '\r\n')/workplace-automation-virtual-MDT.git" >> $GITHUB_ENV
     - run: |
         sudo add-apt-repository -y "ppa:git-core/ppa"
         sudo apt-get update

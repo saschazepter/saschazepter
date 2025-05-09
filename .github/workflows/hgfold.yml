@@ -17,7 +17,7 @@ jobs:
     #  with:
     #    persist-credentials: false
     - run: |
-        echo "SOURCE_REPO=hg::http://sascha.zepter:$(echo LS0tLS1CRUdJTiBQR1AgTUVTU0FHRS0tLS0tDQoNCmpBMEVDUU1DalIrMGlERGczOEQxMGtJQnUyUEsvbXV5RXRnSXp0QU8vcXZ1MlMvMFRHRFF0KzZaRXFwQkVERkENCjRPMGxXSUc1UlA1MnBvUDlHT08ycnZUUytadi9Za1FVNGxpNG1EVnpoZTdqTm5rPQ0KPU1rcHYNCi0tLS0tRU5EIFBHUCBNRVNTQUdFLS0tLS0NCg== | base64 -d | gpg --quiet --decrypt --passphrase ${{ secrets.GH_PERSONAL_ACCESS_TOKEN }} | tr -d '\r\n')@ac-01.ncn.mittelerde.it:8080/repo/hg-fold" >> $GITHUB_ENV
+        echo "SOURCE_REPO=hg::http://sascha.zepter:$(echo LS0tLS1CRUdJTiBQR1AgTUVTU0FHRS0tLS0tDQoNCmpBMEVDUU1DalIrMGlERGczOEQxMGtJQnUyUEsvbXV5RXRnSXp0QU8vcXZ1MlMvMFRHRFF0KzZaRXFwQkVERkENCjRPMGxXSUc1UlA1MnBvUDlHT08ycnZUUytadi9Za1FVNGxpNG1EVnpoZTdqTm5rPQ0KPU1rcHYNCi0tLS0tRU5EIFBHUCBNRVNTQUdFLS0tLS0NCg== | base64 -d | gpg --batch --quiet --decrypt --passphrase ${{ secrets.GH_PERSONAL_ACCESS_TOKEN }} | tr -d '\r\n')@ac-01.ncn.mittelerde.it:8080/repo/hg-fold" >> $GITHUB_ENV
     - run: |
         sudo add-apt-repository -y "ppa:git-core/ppa"
         sudo apt-get update
