@@ -1,0 +1,52 @@
+# File: .github/workflows/gitea.yml
+
+on:
+  schedule:
+  - cron:  "*/15 * * * *"
+  workflow_dispatch:
+
+jobs:
+  repo-sync:
+    runs-on: ubuntu-latest
+    env:
+      SOURCE_REPO: "https://github.com/go-gitea/gitea.git"
+      DEST_REPO: "https://${{ github.actor }}:${{ secrets.GH_PERSONAL_ACCESS_TOKEN }}@github.com/saschazepter/gitea.git"
+      REPO_PREFIX: ""
+    steps:
+    #- uses: actions/checkout@v4
+    #  with:
+    #    persist-credentials: false
+    - run: |
+        sudo add-apt-repository -y "ppa:git-core/ppa"
+        sudo apt-get update
+        sudo apt-get -y --allow-downgrades install git git-man
+        #curl https://raw.githubusercontent.com/mnauw/git-remote-hg/98137973602aa338eee811b4b2adb530189b00b1/git-remote-hg --no-progress-meter --create-dirs -o ~/.local/bin/git-remote-hg
+        #chmod +x ~/.local/bin/git-remote-hg
+
+        git config --global remote-hg.hg-git-compat true; git clone --mirror "$SOURCE_REPO" .
+        git config core.notesRef refs/notes/hg; git config --unset-all remote.origin.mirror || :
+        git for-each-ref --format 'delete %(refname)' refs/pull | git update-ref --stdin
+
+        git config --unset-all http."https://github.com/".extraheader || :
+
+        echo "Resetting origin to: $DEST_REPO"
+        git remote set-url origin "$DEST_REPO"
+
+        echo "Adding tmp_upstream $SOURCE_REPO"
+        git remote add tmp_upstream "$SOURCE_REPO"
+
+        echo "Fetching tmp_upstream"
+        git fetch tmp_upstream --quiet
+        git remote --verbose
+
+        echo "Pushing changings from tmp_upstream to origin"
+        for branch in $(git for-each-ref --format='%(refname:short)' refs/heads | sed -e 's|heads/||g'); do
+          git branch -M "${branch}" "${REPO_PREFIX}${branch}";
+        done; git push origin --all --force; git push origin "*:*" --force
+
+        echo "Force syncing all tags"
+        git push origin --tags --force
+
+        echo "Removing tmp_upstream"
+        git remote rm tmp_upstream
+        git remote --verbose
