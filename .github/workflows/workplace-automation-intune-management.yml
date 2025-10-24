@@ -1,8 +1,8 @@
 # File: .github/workflows/workplace-automation-intune-management.yml
 
 on:
-  schedule:
-  - cron:  "0 1,9,17 * * *"
+  #schedule:
+  #- cron:  "0 1,9,17 * * *"
   workflow_dispatch:
 
 jobs:

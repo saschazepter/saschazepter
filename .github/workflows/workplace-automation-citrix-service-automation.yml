@@ -1,8 +1,8 @@
 # File: .github/workflows/workplace-automation-citrix-service-automation.yml
 
 on:
-  schedule:
-  - cron:  "0 1,9,17 * * *"
+  #schedule:
+  #- cron:  "0 1,9,17 * * *"
   workflow_dispatch:
 
 jobs:
