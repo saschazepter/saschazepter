@@ -1,4 +1,4 @@
-# File: .github/workflows/APatch.yml
+# File: .github/workflows/midpoint.yml
 
 on:
   schedule:
