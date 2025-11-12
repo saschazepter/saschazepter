@@ -1,4 +1,4 @@
-# File: .github/workflows/homey-heating.yml
+# File: .github/workflows/app.mskg.homey-heating.yml
 
 on:
   schedule:
@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       SOURCE_REPO: "https://github.com/mskg/homey-heating.git"
-      DEST_REPO: "https://${{ github.actor }}:${{ secrets.GH_PERSONAL_ACCESS_TOKEN }}@github.com/saschazepter/homey-heating.git"
+      DEST_REPO: "https://${{ github.actor }}:${{ secrets.GH_PERSONAL_ACCESS_TOKEN }}@github.com/saschazepter/app.mskg.homey-heating.git"
       REPO_PREFIX: ""
     steps:
     #- uses: actions/checkout@v4
