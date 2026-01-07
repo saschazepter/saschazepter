@@ -7,7 +7,7 @@ on:
 
 jobs:
   repo-sync:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     env:
       SOURCE_REPO: "https://git.finalrewind.org/Travel-Status-DE-VRR"
       DEST_REPO: "https://${{ github.actor }}:${{ secrets.GH_PERSONAL_ACCESS_TOKEN }}@github.com/saschazepter/Travel-Status-DE-VRR.git"
