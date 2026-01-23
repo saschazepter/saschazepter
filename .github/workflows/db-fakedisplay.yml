@@ -9,7 +9,7 @@ jobs:
   repo-sync:
     runs-on: ubuntu-22.04
     env:
-      SOURCE_REPO: "https://git.finalrewind.org/db-fakedisplay"
+      SOURCE_REPO: "https://chaosdorf.de/git/derf/db-infoscreen.git"
       DEST_REPO: "https://${{ github.actor }}:${{ secrets.GH_PERSONAL_ACCESS_TOKEN }}@github.com/saschazepter/db-fakedisplay.git"
       REPO_PREFIX: ""
     steps:

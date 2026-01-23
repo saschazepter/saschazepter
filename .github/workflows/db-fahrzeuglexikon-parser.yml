@@ -9,7 +9,7 @@ jobs:
   repo-sync:
     runs-on: ubuntu-22.04
     env:
-      SOURCE_REPO: "https://git.finalrewind.org/db-fahrzeuglexikon-parser"
+      SOURCE_REPO: "https://github.com/derf/db-fahrzeuglexikon-parser.git"
       DEST_REPO: "https://${{ github.actor }}:${{ secrets.GH_PERSONAL_ACCESS_TOKEN }}@github.com/saschazepter/db-fahrzeuglexikon-parser.git"
       REPO_PREFIX: ""
     steps:

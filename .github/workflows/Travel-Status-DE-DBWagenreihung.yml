@@ -9,7 +9,7 @@ jobs:
   repo-sync:
     runs-on: ubuntu-22.04
     env:
-      SOURCE_REPO: "https://git.finalrewind.org/Travel-Status-DE-DBWagenreihung"
+      SOURCE_REPO: "https://chaosdorf.de/git/derf/travel-status-de-dbwagenreihung.git"
       DEST_REPO: "https://${{ github.actor }}:${{ secrets.GH_PERSONAL_ACCESS_TOKEN }}@github.com/saschazepter/Travel-Status-DE-DBWagenreihung.git"
       REPO_PREFIX: ""
     steps:
