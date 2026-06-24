@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-22.04
     env:
       SOURCE_REPO: "https://git.code.sf.net/p/gestioip/gestioip"
-      DEST_REPO: "https://github.com/saschazepter/gestioip.git"
+      DEST_REPO: "https://${{ github.actor }}:${{ secrets.GH_PERSONAL_ACCESS_TOKEN }}@github.com/saschazepter/gestioip.git"
       REPO_PREFIX: ""
     steps:
     #- uses: actions/checkout@v4
