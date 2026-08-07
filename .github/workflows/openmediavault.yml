@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-22.04
     env:
       SOURCE_REPO: "https://github.com/openmediavault/openmediavault.git"
-      DEST_REPO: "https://${{ github.actor }}:${{ secrets.GH_PERSONAL_ACCESS_TOKEN }}@github.com/saschazepter/git.git"
+      DEST_REPO: "https://${{ github.actor }}:${{ secrets.GH_PERSONAL_ACCESS_TOKEN }}@github.com/saschazepter/openmediavault.git"
       REPO_PREFIX: ""
     steps:
     #- uses: actions/checkout@v4
